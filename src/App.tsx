@@ -1,33 +1,14 @@
-import { useMemo, useState } from "react";
+import { Link, Route } from "wouter";
+import Counter from "./Counter";
 
-function App() {
-  const [count, setCount] = useState(0);
-
-  const handleIncrement = () => setCount((prevCount) => (prevCount += 1));
-  const handleDecrement = () => setCount((prevCount) => (prevCount -= 1));
-  const resetCount = () => setCount(0);
-
-  const counterClassName = useMemo(() => {
-    if (count > 0) {
-      return "success";
-    }
-    if (count < 0) {
-      return "failure";
-    }
-  }, [count]);
-
+export default function App() {
   return (
-    <div id="app">
-      <div className="content">
-        <button onClick={handleDecrement}>-</button>
-        <div className={counterClassName} id="counter">
-          {count}
-        </div>
-        <button onClick={handleIncrement}>+</button>
-      </div>
-      <button onClick={resetCount}>Reset</button>
-    </div>
+    <>
+      <Route path="/">
+        <Link href="/">Home</Link>
+        <Link href="/counter">Counter</Link>
+      </Route>
+      <Route path="/counter" component={Counter} />
+    </>
   );
 }
-
-export default App;
