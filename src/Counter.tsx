@@ -9,23 +9,30 @@ function Counter() {
 
   const counterClassName = useMemo(() => {
     if (count > 0) {
-      return "success";
+      return "counter success";
     }
     if (count < 0) {
-      return "failure";
+      return "counter failure";
     }
+    return "counter";
   }, [count]);
 
   return (
-    <div id="app">
+    <div className="app">
       <div className="content">
-        <button onClick={handleDecrement}>-</button>
+        <button className="button" onClick={handleDecrement}>
+          -
+        </button>
         <div className={counterClassName} id="counter">
           {count}
         </div>
-        <button onClick={handleIncrement}>+</button>
+        <button className="button" onClick={handleIncrement}>
+          +
+        </button>
       </div>
-      <button onClick={resetCount}>Reset</button>
+      <button className="button" onClick={resetCount}>
+        Reset
+      </button>
     </div>
   );
 }
